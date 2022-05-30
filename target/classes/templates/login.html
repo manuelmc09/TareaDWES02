@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Gestion trasportes- Login</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+<link
+	href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css"
+	rel="stylesheet" crossorigin="anonymous">
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}">
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Gestión de Transportes</h1>
+			<h4><a th:href="@{'/'}">Volver a inicio</a></h4>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<section>
+			<h2 class="form-signin-heading">Formulario Login</h2>
+		</section>
+		<div th:if="${param.error}">
+			<h3>Usuario invalido y contraseña.</h3>
+		</div>
+		<div th:if="${param.logout}">
+			<h3>Tu sesión ha sido cerrada</h3>
+		</div>
+		<section>
+			<form th:action="@{/login}" class="form-signin" method="post">
+				<div>
+					<label>Usuario: </label> 
+					<input type="text" name="u" class="form-control" placeholder="Usuario" required="" autofocus="" />
+				</div>
+				<div>
+					<label>Contraseña: </label> 
+					<input type="password" name="p" class="form-control" placeholder="Contraseña" required=""/>
+				</div>
+				<div>
+					<input type="submit" class="btn btn-info" value="Login" />
+				</div>
+				 <p>¿Aún no tienes una cuenta?<a th:href="@{/register}"> Registrate</a></p>
+			</form>
+		</section>
+
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

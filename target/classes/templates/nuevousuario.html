@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Crear Nuevo Usuario</title>
+</head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}">
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Gestión de Transportes</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2>Nuevo Usuario</h2>
+			</div>
+			<hr>
+			<div class="col-md-offset-2 col-md-8 d-flex justify-content-center">
+				<form action="#" th:action="@{/saveusuario}" th:object="${usuario}"
+					method="post">
+					<table border="0" cellpadding="10">
+						<tr>
+							<td>Nombre:</td>
+							<td><input type="text" th:field="*{nombre}" /></td>
+						</tr>
+						<tr>
+							<td>Edad:</td>
+							<td><input type="text" th:field="*{edad}" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><button class="btn-success" type="submit">Guardar</button></td>
+						</tr>
+					</table>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

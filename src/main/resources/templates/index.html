@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<htmllang ="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Gestión de Transportes</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Bootstrap-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}">
+
+</head>
+<body>
+<header class="col-md-12">
+	<div id="noAutentificado" sec:authorize="!isAuthenticated()"><h5>NO estás auntentificado</h5></div>
+	<div sec:authorize="isAuthenticated()"><h5 id="nombreUsuario" sec:authentication="name"></h5><h5>&nbsp;estás auntentificado</h5></div>
+	<div id="cerrarSesion" sec:authorize="isAuthenticated()">
+		<form th:action="@{/logout}" method="post">
+	    	<input type="submit"  class="btn btn-success m-5" value="Logout" />
+		</form>
+	</div>
+	<div id="iniciarSesion" sec:authorize="!isAuthenticated()">
+		<form th:action="@{/login}" method="post">
+		    <input type="submit"  class="btn btn-info m-5"  value="Login" />
+		</form>
+	</div>
+</header>
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Gestión de Transportes</h1>
+		</div>
+	</div>
+	<div class="card text-center">
+		<div class="card-header bg-info text-center text-white">
+			<h3 sec:authorize="isAuthenticated()">Bienvenido <b><span sec:authentication="name">Username</span> a Trasportes MVC App</b>
+		&nbsp;
+		<i><span sec:authentication="principal.authorities">Roles</span></i></h3>
+
+		</div>
+
+		<div class="card-body">
+			<form>
+				<a th:href="@{/nuevousuario}" class="btn btn-success m-5">Registro de usuario</a> 
+				<a th:href="@{/getAllparadas}" class="btn btn-danger m-5">Buscar Lineas y paradas</a> 
+				<a th:href="@{/tarifas}" class="btn btn-danger m-5">Calcular Tarifa de Viaje</a> 
+				<a th:href="@{/recargarsaldousuario}" class="btn btn-info m-5">Recargar saldo</a> 
+				<div sec:authorize="hasAuthority('Admin')"><a th:href="@{/categoria}" class="btn btn-info m-5">Cambiar categoría</a></div>
+				<div sec:authorize="isAuthenticated()"><a th:href="@{/consultaviajes}" class="btn btn-danger m-5">Consultar Viajes</a></div>
+				<div sec:authorize="isAuthenticated()"><a th:href="@{/viajar}" class="btn btn-info m-5">Viajar</a></div>
+				<div sec:authorize="hasAuthority('Admin')"><a th:href="@{/nuevaparadalinea}" class="btn btn-danger m-5">CRUD Lineas/Paradas</a></div>
+			</form>
+
+		</div>
+	</div>
+
+
+
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

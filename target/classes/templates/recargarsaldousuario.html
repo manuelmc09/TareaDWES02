@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Recargar Saldo</title>
+</head>
+<!--Bootstrap-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/css/styles.css"
+	th:href="@{/css/styles.css}">
+<body>
+
+	<div class="jumbotron">
+		<div class="container text-center">
+			<h1>Gestión de Transportes</h1>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2>Recargar saldo</h2>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-offset-4 col-md-4">
+					<table class="table">
+						<thead>
+							<tr>
+								<td>Nombre</td>
+								<td>Edad</td>
+								<td>Categoria</td>
+								<td>Saldo</td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="usuario : ${listausuario}">
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="col-12 d-flex justify-content-center bg-info text-white"">
+				<form action="#" th:action="@{/filtrarusuarios}"
+					th:object="${filtro}" method="post">
+					<table>
+						<tr>
+							<td><input type="text"></td>
+
+							<td colspan="2"><button type="submit" class="btn-success">Buscar</button>
+						</tr>
+					</table>
+
+				</form>
+				<table border="0" cellpadding="10" class="table table-hover">
+					<thead>
+
+						<!-- 						  <tr th:each="usufiltrado : ${listausuarios}"> -->
+						<!--             	<td th:text="${product.id}">Product ID</td> -->
+						<!--                 <td th:text="${product.name}">Name</td> -->
+						<!--                 <td th:text="${product.brand}">Brand</td> -->
+						<!--                 <td th:text="${product.madein}">Made in</td> -->
+						<!--                 <td th:text="${product.price}">Price</td> -->
+
+
+
+
+
+						<tr th:each="usufiltrado : ${listausuarios}">
+							<td>Nombre:</td>
+							<td th:text="${usufiltrado.nombre}" /></td>
+
+							<td>Edad:</td>
+							<td th:text="${usufiltrado.edad}" /></td>
+
+							<td>Categoria:</td>
+							<td th:text="${usufiltrado.bono.categoria}" /></td>
+
+							<td>Saldo:</td>
+							<td th:text="${usufiltrado.bono.saldo}" /></td>
+						</tr>
+
+					</thead>
+				</table>
+
+
+
+				<hr>
+				<form action="#" th:action="@{/savesaldo}" th:object="${usuario}"
+					method="post">
+
+					<table border="0" cellpadding="10" class="table table-hover">
+						<tbody>
+							<tr>
+								<th>Nombre:</th>
+								<td th:text="${nombre}"></td>
+							</tr>
+							<tr>
+								<th>Edad:</th>
+								<td th:text="${edad}"></td>
+							</tr>
+							<tr>
+								<th>Categoria:</th>
+								<td th:text="${bono.categoria}"></td>
+							</tr>
+							<tr>
+								<th>Saldo:</th>
+								<td th:text="${usuario.bono.saldo}"></td>
+							</tr>
+							<tr>
+
+								<td>Elige el saldo a recargar: <select>
+										<option value="10">10</option>
+										<option value="11">11</option>
+										<option value="12">12</option>
+										<option value="13">13</option>
+										<option value="14">14</option>
+										<option value="15">15</option>
+										<option value="20">20</option>
+										<option value="25">25</option>
+										<option value="30">30</option>
+										<option value="30">35</option>
+										<option value="40">40</option>
+										<option value="45">45</option>
+										<option value="50">50</option>
+								</select>
+								</td>
+								<td><a th:href="@{'/savesaldo/' + ${usuario.id}}">actualizar_saldo</a>
+								</td>
+
+								<td colspan="2"><button type="submit" class="btn-success">Actualizar</button></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
